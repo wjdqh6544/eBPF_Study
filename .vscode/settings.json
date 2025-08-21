@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "loader.skel.h": "c",
-        "resource.h": "c",
-        "vmlinux.h": "c",
-        "bpf_helpers.h": "c",
-        "bpf_tracing.h": "c"
-    }
-}
