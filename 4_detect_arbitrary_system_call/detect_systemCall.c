@@ -1,6 +1,9 @@
 #include "datastr.h"
 #include "vmlinux.h"
 #include <bpf/bpf_helpers.h>
+#include <bpf/bpf_tracing.h>
+#include <bpf/bpf_core_read.h>
+
 
 char LICENSE[] SEC("license") = "GPL";
 
@@ -30,7 +33,9 @@ int bpf_trace_syscall_entry(struct bpf_raw_tracepoint_args *ctx) {
     calldata->uid = bpf_get_current_uid_gid() & 0xFFFFFFFF;
 
     calldata->cur_nsec = bpf_ktime_get_ns();
-    
+
+    bpf_printk("ID - %d, test: %d\n", ctx->args[1], ctx->args[2]);
+
     bpf_ringbuf_submit(calldata, 0);
 
     return 0;
