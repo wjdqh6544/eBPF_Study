@@ -1,7 +1,7 @@
 .vscode/
 bpf/
 z_include/
-linux/.
+linux/
 *.o
 vmlinux.h
 loader.skel.h
